@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { styled } from './config/stitches.config'
+import Main from './Main'
+
+const Page = styled('div', {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%'
+})
+
+const Header = styled('div', {
+display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '20px',
+    fontWeight: 'bold'
+})
+
+const Footer = styled('div', {
+    boxShadow: '0 0 3px 1px rgba(0, 0, 0, 0.2)',
+    padding: '16px',
+    fontSize: '9px',
+    textAlign: 'center',
+
+})
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Page>
+      <Header>
+        Word Assist
+      </Header>
+        <Main/>
+        <Footer>
+            &copy; 2022 Vincent Ramdhanie
+        </Footer>
+    </Page>
   );
 }
 
