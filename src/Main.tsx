@@ -137,6 +137,7 @@ export default function () {
     }, [showing, hiding, fixed])
 
     return <Wrapper>
+        <div className="text-red-200">Hello</div>
         <Form>
             <Box>
                 <Label>Letters to Include</Label>

@@ -32,7 +32,7 @@ function App() {
       </Header>
         <Main/>
         <Footer>
-            &copy; 2022 Vincent Ramdhanie
+            &copy; 2024 Vincent Ramdhanie
         </Footer>
     </Page>
   );

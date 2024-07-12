@@ -15,6 +15,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
+    "tailwindcss": "^3.4.4",
     "typescript": "^4.5.5",
     "web-vitals": "^2.1.4"
   },
@@ -23,12 +24,15 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:storybook/recommended"
     ]
   },
   "browserslist": {
@@ -44,6 +48,22 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3"
-  }
+    "@chromatic-com/storybook": "^1.6.1",
+    "@storybook/addon-essentials": "^8.2.2",
+    "@storybook/addon-interactions": "^8.2.2",
+    "@storybook/addon-links": "^8.2.2",
+    "@storybook/addon-onboarding": "^8.2.2",
+    "@storybook/addon-styling-webpack": "^1.0.0",
+    "@storybook/blocks": "^8.2.2",
+    "@storybook/preset-create-react-app": "^8.2.2",
+    "@storybook/react": "^8.2.2",
+    "@storybook/react-webpack5": "^8.2.2",
+    "@storybook/test": "^8.2.2",
+    "eslint-plugin-storybook": "^0.8.0",
+    "gh-pages": "^3.2.3",
+    "prop-types": "^15.8.1",
+    "storybook": "^8.2.2",
+    "webpack": "^5.93.0"
+  },
+  "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903"
 }
