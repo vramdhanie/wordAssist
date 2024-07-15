@@ -1,0 +1,22 @@
+.devcontainer/
+.github/
+.husky/
+.next/
+.pnpm-store/
+.vs-code/
+dist/
+node_modules/
+patches/
+
+*.html
+datasets
+next-env.d.ts
+agent/runtime/libs/**/*.js
+agent/tools/openapi/clients
+ci
+__fixtures__/
+
+# no linting on .hidden files
+*.hidden.ts
+
+*.graphql.ts / *.graphql.js
