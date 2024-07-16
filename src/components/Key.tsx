@@ -8,10 +8,6 @@ export interface KeyProps {
      */
     backgroundColor?: string
     /**
-     * How large should the key be?
-     */
-    size?: 'small' | 'medium' | 'large'
-    /**
      * Key character
      */
     label: string
@@ -30,7 +26,6 @@ export interface KeyProps {
  */
 export const Key = ({
     colour = '#004085',
-    size = 'medium',
     backgroundColor = '#cce5ff',
     label,
     mode = 'Unused',
@@ -39,8 +34,7 @@ export const Key = ({
     return (
         <button
             type="button"
-            className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-            style={{ backgroundColor }}
+            className=""
             {...props}
         >
             {label}
