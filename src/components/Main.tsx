@@ -1,5 +1,5 @@
-import { styled } from './config/stitches.config'
-import { words } from './data/words'
+import { styled } from '../config/stitches.config'
+import { words } from '../data/words'
 import { useState, useEffect, useCallback } from 'react'
 
 const Wrapper = styled('div', {
@@ -75,7 +75,7 @@ const FixedInput = styled('input', {
     textAlign: 'center',
 })
 
-export default function () {
+export function Main() {
     const [lettersToInclude, setLetterstoInclude] = useState<string>('')
     const [lettersToExclude, setLetterstoExclude] = useState<string>('')
     const [wordsToDisplay, setWordsToDisplay] = useState<string[]>(words)
@@ -211,11 +211,11 @@ export default function () {
                 </Box>
                 <Box>{wordsToDisplay.length} words</Box>
             </Information>
-            <Words>
+            {/* <Words>
                 {wordsToDisplay.map((word) => (
                     <Word key={word}>{word}</Word>
                 ))}
-            </Words>
+            </Words> */}
         </Wrapper>
     )
 }
