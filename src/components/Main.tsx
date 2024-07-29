@@ -2,6 +2,9 @@ import { styled } from '../config/stitches.config'
 import { words } from '../data/words'
 import { useState, useEffect, useCallback } from 'react'
 import { KeyBoard } from './KeyBoard'
+import { Word } from './Word'
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 const Form = styled('div', {
     display: 'flex',
@@ -25,8 +28,6 @@ const Words = styled('div', {
         gridTemplateColumns: 'repeat(12, 1fr)',
     },
 })
-
-const Word = styled('div', {})
 
 const Box = styled('div', {})
 const Text = styled('div', {})
@@ -124,8 +125,11 @@ export function Main() {
     }, [showing, hiding, fixed])
 
     return (
-        <div className="flex-1">
-            <KeyBoard />
+        <div className="flex-1 w-1/2 mx-auto my-0">
+            <DndProvider backend={HTML5Backend}>
+                <KeyBoard />
+                <Word />
+            </DndProvider>
 
             {/* <Words>
                 {wordsToDisplay.map((word) => (
