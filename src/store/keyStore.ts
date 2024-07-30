@@ -5,6 +5,8 @@ interface KeyState {
     keys: Record<string, KeyChar>
     includedKeys: string[]
     excludedKeys: string[]
+    letters: string[]
+    addLetter: (letter: string, idx: number) => void
 }
 
 const useKeyStore = create<KeyState>((set) => ({
@@ -60,6 +62,16 @@ const useKeyStore = create<KeyState>((set) => ({
                 state.keys[key].mode = 'Exclude'
             }
             return { excludedKeys: [...new Set([...state.excludedKeys, ...keys])] }
+        }),
+    letters: ['', '', '', '', ''],
+    addLetter: (letter: string, idx: number) =>
+        set((state) => {
+            if (state.letters[idx] !== '') {
+                state.keys[state.letters[idx]].mode = 'Unused'
+            }
+            state.keys[letter].mode = 'Positioned'
+            state.letters[idx] = letter
+            return { letters: [...state.letters] }
         }),
 }))
 

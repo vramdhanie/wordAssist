@@ -2,17 +2,19 @@ import { create } from 'zustand'
 
 interface WordState {
     letters: string[]
+    addLetter: (letter: string, idx: number) => void
 }
 
 const useWordStore = create<WordState>((set) => ({
-    letters: ['A', 'B', '', '', ''],
+    letters: ['', '', '', '', ''],
     setLetters: (letters: string[]) =>
         set(() => {
             return { letters: letters }
         }),
-    addLetter: (letter: string) =>
+    addLetter: (letter: string, idx: number) =>
         set((state) => {
-            return { letters: [...state.letters, letter] }
+            state.letters[idx] = letter
+            return { letters: [...state.letters] }
         }),
     removeLetter: (letter: string) =>
         set((state) => {

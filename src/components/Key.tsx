@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { useDrag, DragSourceMonitor } from 'react-dnd'
 import { twMerge } from 'tailwind-merge'
 export interface KeyProps {
@@ -26,10 +27,22 @@ export const Key = ({ label, mode = 'Unused', ...props }: KeyProps) => {
             isDragging: !!monitor.isDragging(),
         }),
     })
+    const bgColor = useMemo(() => {
+        switch (mode) {
+            case 'Include':
+                return 'bg-green-500'
+            case 'Exclude':
+                return 'bg-red-500'
+            case 'Positioned':
+                return 'bg-blue-500'
+            default:
+                return 'bg-white'
+        }
+    }, [mode])
     return (
         <button
             type="button"
-            className={isDragging ? 'bg-red-500' : 'bg-white'}
+            className={twMerge(isDragging ? 'bg-red-500' : 'bg-white', bgColor)}
             {...props}
             ref={drag}
         >

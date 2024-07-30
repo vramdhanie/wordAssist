@@ -1,14 +1,17 @@
 import { useDrop } from 'react-dnd'
-
+import { useKeyStore } from '../store/keyStore'
 interface Props {
     children: React.ReactNode
+    index: number
 }
 
-export const Letter = ({ children }: Props) => {
+export const Letter = ({ children, index }: Props) => {
+    const { addLetter } = useKeyStore()
+
     const [{ isOver }, drop] = useDrop({
         accept: 'key',
-        drop: () => {
-            console.log('dropped', children)
+        drop: (item: { label: string }) => {
+            addLetter(item.label, index)
         },
         collect: (monitor) => ({
             isOver: !!monitor.isOver(),
