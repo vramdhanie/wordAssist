@@ -7,6 +7,7 @@ interface KeyState {
     excludedKeys: string[]
     letters: string[]
     addLetter: (letter: string, idx: number) => void
+    removeLetter: (letter: string, index: number) => void
 }
 
 const useKeyStore = create<KeyState>((set) => ({
@@ -71,6 +72,12 @@ const useKeyStore = create<KeyState>((set) => ({
             }
             state.keys[letter].mode = 'Positioned'
             state.letters[idx] = letter
+            return { letters: [...state.letters] }
+        }),
+    removeLetter: (letter: string, index: number) =>
+        set((state) => {
+            state.keys[letter].mode = 'Unused'
+            state.letters[index] = ''
             return { letters: [...state.letters] }
         }),
 }))
