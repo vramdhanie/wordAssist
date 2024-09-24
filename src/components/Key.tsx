@@ -1,18 +1,10 @@
 import { useMemo } from 'react'
 import { useDrag, DragSourceMonitor } from 'react-dnd'
 import { twMerge } from 'tailwind-merge'
+
 export interface KeyProps {
-    /**
-     * Key character
-     */
     label: string
-    /**
-     * Can be Unused, Include, Positioned, or Exclude
-     */
     mode: string
-    /**
-     * Optional click handler
-     */
     onClick?: () => void
 }
 
@@ -20,13 +12,14 @@ export interface KeyProps {
  * Represents a single keyboard key.
  */
 export const Key = ({ label, mode = 'Unused', ...props }: KeyProps) => {
-    const [{ isDragging }, drag] = useDrag({
+    const [{ isDragging }, drag, preview] = useDrag({
         type: 'key',
         item: { label },
         collect: (monitor: DragSourceMonitor) => ({
             isDragging: !!monitor.isDragging(),
         }),
     })
+
     const bgColor = useMemo(() => {
         switch (mode) {
             case 'Include':
@@ -39,12 +32,21 @@ export const Key = ({ label, mode = 'Unused', ...props }: KeyProps) => {
                 return 'bg-white'
         }
     }, [mode])
+
     return (
         <button
             type="button"
-            className={twMerge(isDragging ? 'shadow' : 'shadow-sm', bgColor, 'hover:bg-slate-100')}
+            className={twMerge(
+                isDragging ? 'shadow' : 'shadow-sm',
+                bgColor,
+                'hover:bg-slate-100',
+                'touch-manipulation'
+            )}
             {...props}
-            ref={drag}
+            ref={(node) => {
+                drag(node)
+                preview(node)
+            }}
         >
             {label}
         </button>
