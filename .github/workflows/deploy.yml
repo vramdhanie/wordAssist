@@ -29,8 +29,20 @@ jobs:
       - name: Build project
         run: pnpm run build
 
+      - name: List build directory contents
+        run: ls -R ./build
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build # The folder that contains your built static files
+          force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Check gh-pages branch
+        run: |
+          git fetch origin gh-pages
+          echo "Latest commit on gh-pages:"
+          git log -1 --pretty=format:"%h - %an, %ar : %s" origin/gh-pages
