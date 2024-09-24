@@ -42,7 +42,7 @@ export const Key = ({ label, mode = 'Unused', ...props }: KeyProps) => {
     return (
         <button
             type="button"
-            className={twMerge(isDragging ? 'shadow' : 'shadow-sm', bgColor)}
+            className={twMerge(isDragging ? 'shadow' : 'shadow-sm', bgColor, 'hover:bg-slate-100')}
             {...props}
             ref={drag}
         >
