@@ -3,6 +3,7 @@ import { useDrop } from 'react-dnd'
 
 export const ExcludeList = () => {
     const { excludedKeys, setExcludedKeys, filter } = useKeyStore()
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [{ isOver }, drop] = useDrop({
         accept: 'key',
         drop: (item: { label: string }) => {
