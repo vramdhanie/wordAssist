@@ -2,7 +2,7 @@
     "name": "word_assist",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://vramdhanie.github.io/wordAssist",
+    "homepage": "https://words.vincentramdhanie.com",
     "dependencies": {
         "@eslint/compat": "^1.1.1",
         "@stitches/react": "^1.2.8",
