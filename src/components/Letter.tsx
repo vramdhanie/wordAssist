@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const Letter = ({ children, index }: Props) => {
-    const { addLetter, removeLetter } = useKeyStore()
+    const { addLetter, removeLetter, filter } = useKeyStore()
 
     const [{ isOver }, drop] = useDrop({
         accept: 'key',
@@ -24,8 +24,9 @@ export const Letter = ({ children, index }: Props) => {
     const handleRemove = useCallback(() => {
         if (children) {
             removeLetter(children.toString(), index)
+            filter()
         }
-    }, [index, removeLetter, children])
+    }, [index, removeLetter, children, filter])
 
     return (
         <div

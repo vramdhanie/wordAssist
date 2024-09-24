@@ -40,7 +40,8 @@ export const Key = ({ label, mode = 'Unused', ...props }: KeyProps) => {
                 isDragging ? 'shadow' : 'shadow-sm',
                 bgColor,
                 'hover:bg-slate-100',
-                'touch-manipulation'
+                'touch-manipulation',
+                'text-2xl'
             )}
             {...props}
             ref={(node) => {

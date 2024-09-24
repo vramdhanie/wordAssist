@@ -14,6 +14,8 @@ interface KeyState {
     removeLetter: (letter: string, index: number) => void
     setIncludedKeys: (keys: string[]) => void
     setExcludedKeys: (keys: string[]) => void
+    clearIncludedKeys: () => void
+    clearExcludedKeys: () => void
 }
 
 const useKeyStore = create<KeyState>((set) => ({
@@ -126,6 +128,15 @@ const useKeyStore = create<KeyState>((set) => ({
             state.keys[letter].mode = 'Unused'
             state.letters[index] = ''
             return { letters: [...state.letters] }
+        }),
+    clearIncludedKeys: () =>
+        set((state) => {
+            return { includedKeys: [] }
+        }),
+
+    clearExcludedKeys: () =>
+        set((state) => {
+            return { excludedKeys: [] }
         }),
 }))
 
