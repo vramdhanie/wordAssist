@@ -3,7 +3,7 @@ import { useDrop } from 'react-dnd'
 
 export const ExcludeList = () => {
     const { excludedKeys, setExcludedKeys, filter } = useKeyStore()
-    const [{ isOver }, drop] = useDrop({
+    const [drop] = useDrop({
         accept: 'key',
         drop: (item: { label: string }) => {
             setExcludedKeys([...excludedKeys, item.label])

@@ -1,5 +1,3 @@
-import { styled } from '../config/stitches.config'
-import { useState, useEffect, useCallback } from 'react'
 import { KeyBoard } from './KeyBoard'
 import { Word } from './Word'
 import { DndProvider } from 'react-dnd'
@@ -9,11 +7,6 @@ import { IncludeList } from './IncludeList'
 import { ExcludeList } from './ExcludeList'
 
 export function Main() {
-    const [showing, setShowing] = useState('')
-    const [hiding, setHiding] = useState('')
-
-    const handleReset = useCallback(() => {}, [showing, hiding])
-
     return (
         <div className="flex-1 w-1/2 mx-auto my-0">
             <DndProvider backend={HTML5Backend}>
