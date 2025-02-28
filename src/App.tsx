@@ -6,13 +6,20 @@ const Page = styled('div', {
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
+    minHeight: '100vh',
+})
+
+const MainContent = styled('main', {
+    flex: '1 1 auto',
 })
 
 function App() {
     return (
         <Page>
             <Header>Word Assist</Header>
-            <Main />
+            <MainContent>
+                <Main />
+            </MainContent>
             <Footer>&copy; 2024 Vincent Ramdhanie</Footer>
         </Page>
     )

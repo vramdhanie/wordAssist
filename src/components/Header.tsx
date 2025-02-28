@@ -24,18 +24,20 @@ export const Header = ({
     onLogout,
     onCreateAccount,
 }: HeaderProps) => (
-    <header>
-        <div className="storybook-header">
-            <div className="bg-blue-800 text-blue-200 font-bold text-lg flex gap-2 p-1">
-                <div> W </div>
-                <h1>{children}</h1>
+    <header className="w-full shadow-sm bg-white border-b border-gray-200">
+        <div className="max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-md shadow-sm font-bold text-lg">
+                    W
+                </div>
+                <h1 className="text-xl font-semibold text-gray-800">{children}</h1>
             </div>
-            <div>
-                {showControls &&
-                    (user ? (
+            {showControls && (
+                <div className="flex items-center space-x-3">
+                    {user ? (
                         <>
-                            <span className="welcome">
-                                Welcome, <b>{user.name}</b>!
+                            <span className="text-sm text-gray-600">
+                                Welcome, <span className="font-medium">{user.name}</span>
                             </span>
                             <Button size="small" onClick={onLogout} label="Log out" />
                         </>
@@ -49,8 +51,9 @@ export const Header = ({
                                 label="Sign up"
                             />
                         </>
-                    ))}
-            </div>
+                    )}
+                </div>
+            )}
         </div>
     </header>
 )

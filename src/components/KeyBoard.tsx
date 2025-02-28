@@ -12,11 +12,11 @@ export const KeyBoard = () => {
     ]
     
     return (
-        <div className="w-full max-w-3xl my-4 mx-auto">
+        <div className="w-full max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto my-3 sm:my-4 px-1 sm:px-2">
             {keyRows.map((row, rowIndex) => (
                 <div 
                     key={rowIndex} 
-                    className="flex flex-row mb-2 gap-1 justify-center"
+                    className="flex flex-row mb-1 sm:mb-2 gap-0.5 sm:gap-1 justify-center"
                 >
                     {row.map((keyChar) => (
                         <div key={keyChar} className="px-0.5">

@@ -4,8 +4,8 @@ interface FooterProps {
 
 export function Footer({ children }: FooterProps = { children: '' }) {
     return (
-        <div className="text-xs font-light text-center p-2 border-t border-t-solid border-t-slate-100 text-slate-500">
+        <footer className="mt-auto py-3 px-4 text-center border-t border-gray-200 text-sm text-gray-500 bg-white">
             {children}
-        </div>
+        </footer>
     )
 }

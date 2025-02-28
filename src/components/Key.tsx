@@ -37,8 +37,10 @@ export const Key = ({ label, mode = 'Unused', ...props }: KeyProps) => {
         <button
             type="button"
             className={twMerge(
-                // Base key styles
-                'w-12 h-12 min-w-[3rem] flex items-center justify-center',
+                // Base key styles - responsive sizing
+                'w-8 h-9 sm:w-10 sm:h-11 md:w-12 md:h-12',
+                'min-w-0 sm:min-w-[2.5rem] md:min-w-[3rem]',
+                'flex items-center justify-center',
                 'font-medium rounded-md border border-gray-300',
                 'transition-all duration-100',
                 
@@ -48,13 +50,13 @@ export const Key = ({ label, mode = 'Unused', ...props }: KeyProps) => {
                 // Color based on mode
                 bgColor,
                 
-                // Hover and active states
+                // Hover and active states - improved for touch
                 'hover:brightness-110',
                 'active:shadow-inner active:translate-y-0.5',
                 
                 // Other utilities
                 'touch-manipulation',
-                'text-xl'
+                'text-sm sm:text-base md:text-xl'
             )}
             {...props}
             ref={(node) => {

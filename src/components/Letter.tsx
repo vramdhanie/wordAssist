@@ -35,7 +35,7 @@ export const Letter = ({ children, index }: Props) => {
             ref={drop}
             className={twMerge(
                 // Base styles for all letter boxes
-                "relative flex justify-center items-center",
+                "relative flex justify-center items-center group",
                 "w-full h-full aspect-square rounded-md",
                 "transition-all duration-100",
                 "touch-manipulation",
@@ -45,7 +45,7 @@ export const Letter = ({ children, index }: Props) => {
                     ? "border-2 border-dashed border-gray-300 bg-gray-50"
                     : "border border-gray-300 bg-white shadow-md",
 
-                // Hover effects
+                // Hover effects - only on non-touch devices
                 "hover:border-blue-300",
 
                 // Animation for drag over state
@@ -53,7 +53,8 @@ export const Letter = ({ children, index }: Props) => {
             )}
         >
             <span className={twMerge(
-                "text-center text-5xl font-medium",
+                "text-center font-medium",
+                "text-3xl sm:text-4xl md:text-5xl", // Responsive text size
                 isEmpty ? "text-gray-300" : "text-gray-700"
             )}>
                 {isEmpty ? "?" : children}
@@ -61,15 +62,19 @@ export const Letter = ({ children, index }: Props) => {
             
             {isOver && <div className="absolute inset-0 bg-blue-100 opacity-30 rounded-md"></div>}
             
-            <button
-                onClick={handleRemove}
-                className={twMerge(
-                    'hidden absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs shadow-sm',
-                    children ? 'group-hover:flex' : 'hidden'
-                )}
-            >
-                ×
-            </button>
+            {!isEmpty && (
+                <button
+                    onClick={handleRemove}
+                    className={twMerge(
+                        'absolute -top-2 -right-2 bg-red-500 text-white rounded-full',
+                        'w-6 h-6 flex items-center justify-center text-xs shadow-sm', // Larger touch target
+                        'opacity-0 group-hover:opacity-100 sm:group-active:opacity-100', // Hidden until hover/active
+                        'transition-opacity duration-200'
+                    )}
+                >
+                    ×
+                </button>
+            )}
         </div>
     )
 }

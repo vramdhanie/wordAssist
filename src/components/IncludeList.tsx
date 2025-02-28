@@ -51,9 +51,9 @@ export const IncludeList = () => {
     return (
         <div
             ref={drop}
-            className="w-full h-24 bg-white border border-gray-200 rounded-lg shadow-sm text-xl p-4 touch-manipulation relative group overflow-auto mb-3"
+            className="w-full h-16 sm:h-20 md:h-24 bg-white border border-gray-200 rounded-lg shadow-sm p-2 sm:p-3 md:p-4 touch-manipulation relative group overflow-auto mb-2 sm:mb-3"
         >
-            <h3 className="text-sm font-medium text-gray-600 mb-2">Include these letters</h3>
+            <h3 className="text-xs sm:text-sm font-medium text-gray-600 mb-1 sm:mb-2">Include these letters</h3>
             <div className="flex flex-wrap">
                 {includedKeys.map((key, index) => (
                     <KeyTile key={index} letter={key} onRemove={removeKey} />
@@ -61,7 +61,7 @@ export const IncludeList = () => {
             </div>
             {isOver && <div className="absolute inset-0 bg-gray-100 opacity-30 rounded-lg"></div>}
             <button
-                className="hidden text-xs text-gray-500 absolute top-2 right-2 group-hover:block group-active:block hover:text-gray-700"
+                className="hidden text-xs text-gray-500 absolute top-1 sm:top-2 right-1 sm:right-2 group-hover:block group-active:block hover:text-gray-700"
                 onClick={handleRemove}
             >
                 Clear all
