@@ -23,13 +23,13 @@ export const Key = ({ label, mode = 'Unused', ...props }: KeyProps) => {
     const bgColor = useMemo(() => {
         switch (mode) {
             case 'Include':
-                return 'bg-green-500'
+                return 'bg-green-500 text-white'
             case 'Exclude':
-                return 'bg-red-500'
+                return 'bg-red-500 text-white'
             case 'Positioned':
-                return 'bg-blue-500'
+                return 'bg-blue-500 text-white'
             default:
-                return 'bg-white'
+                return 'bg-gray-100'
         }
     }, [mode])
 
@@ -37,11 +37,24 @@ export const Key = ({ label, mode = 'Unused', ...props }: KeyProps) => {
         <button
             type="button"
             className={twMerge(
-                isDragging ? 'shadow' : 'shadow-sm',
+                // Base key styles
+                'w-12 h-12 min-w-[3rem] flex items-center justify-center',
+                'font-medium rounded-md border border-gray-300',
+                'transition-all duration-100',
+                
+                // 3D effect with shadows
+                isDragging ? 'shadow-lg' : 'shadow-md',
+                
+                // Color based on mode
                 bgColor,
-                'hover:bg-slate-100',
+                
+                // Hover and active states
+                'hover:brightness-110',
+                'active:shadow-inner active:translate-y-0.5',
+                
+                // Other utilities
                 'touch-manipulation',
-                'text-2xl'
+                'text-xl'
             )}
             {...props}
             ref={(node) => {

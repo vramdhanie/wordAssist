@@ -4,14 +4,16 @@ import { useKeyStore } from '../store/keyStore'
 export const Word = () => {
     const { letters } = useKeyStore()
     return (
-        <div className="flex w-full border border-solid h-24 gap-1 bg-slate-50 mt-2">
-            {letters.map((letter, index) => {
-                return (
-                    <Letter key={index} index={index}>
-                        {letter}
-                    </Letter>
-                )
-            })}
+        <div className="flex justify-center w-full h-24 mt-4 mb-6">
+            <div className="flex gap-2 max-w-md w-full">
+                {letters.map((letter, index) => {
+                    return (
+                        <Letter key={index} index={index}>
+                            {letter}
+                        </Letter>
+                    )
+                })}
+            </div>
         </div>
     )
 }

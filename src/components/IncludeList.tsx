@@ -1,9 +1,10 @@
 import { useCallback } from 'react'
 import { useKeyStore } from '../store/keyStore'
 import { useDrop } from 'react-dnd'
+import { KeyTile } from './KeyTile'
 
 export const IncludeList = () => {
-    const { includedKeys, setIncludedKeys, filter, clearIncludedKeys } = useKeyStore()
+    const { includedKeys, setIncludedKeys, filter, clearIncludedKeys, keys } = useKeyStore()
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [{ isOver }, drop] = useDrop({
         accept: 'key',
@@ -18,24 +19,52 @@ export const IncludeList = () => {
 
     const handleRemove = useCallback(() => {
         if (includedKeys.length > 0) {
+            // Update all included keys to Unused mode if they're not positioned
+            for (const key of includedKeys) {
+                if (keys[key].mode === 'Include') {
+                    keys[key].mode = 'Unused'
+                }
+            }
             clearIncludedKeys()
             filter()
         }
-    }, [includedKeys, clearIncludedKeys, filter])
+    }, [includedKeys, clearIncludedKeys, filter, keys])
+
+    const removeKey = useCallback((letter: string) => {
+        // Set the mode of the removed key back to Unused if it was Include and not Positioned
+        if (keys[letter] && keys[letter].mode === 'Include') {
+            keys[letter].mode = 'Unused'
+        }
+        
+        // Clear the list and add back all keys except the one to remove
+        clearIncludedKeys()
+        
+        const newIncludedKeys = includedKeys.filter(key => key !== letter)
+        if (newIncludedKeys.length > 0) {
+            setIncludedKeys(newIncludedKeys)
+        }
+        
+        // Apply the filter to update filtered words
+        filter()
+    }, [includedKeys, setIncludedKeys, clearIncludedKeys, filter, keys])
 
     return (
         <div
             ref={drop}
-            className="w-full h-24 bg-slate-200 text-xl p-2 touch-manipulation relative group"
+            className="w-full h-24 bg-white border border-gray-200 rounded-lg shadow-sm text-xl p-4 touch-manipulation relative group overflow-auto mb-3"
         >
-            <div className="inset-0 bg-slate-200 opacity-50">Include these letters</div>
-            {includedKeys.join(', ')}
-            {isOver && <div className="absolute inset-0 bg-slate-300 opacity-50"></div>}
+            <h3 className="text-sm font-medium text-gray-600 mb-2">Include these letters</h3>
+            <div className="flex flex-wrap">
+                {includedKeys.map((key, index) => (
+                    <KeyTile key={index} letter={key} onRemove={removeKey} />
+                ))}
+            </div>
+            {isOver && <div className="absolute inset-0 bg-gray-100 opacity-30 rounded-lg"></div>}
             <button
-                className="hidden text-sm absolute top-2 right-2 group-hover:block group-active:block"
+                className="hidden text-xs text-gray-500 absolute top-2 right-2 group-hover:block group-active:block hover:text-gray-700"
                 onClick={handleRemove}
             >
-                X
+                Clear all
             </button>
         </div>
     )
