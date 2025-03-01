@@ -20,7 +20,14 @@ function App() {
             <MainContent>
                 <Main />
             </MainContent>
-            <Footer>&copy; 2024 Vincent Ramdhanie</Footer>
+            <Footer> 
+                <div className="flex justify-center space-x-4 mb-2">
+                    <a href="https://github.com/vramdhanie" className="hover:text-slate-800 transition-colors" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://twitter.com/vramdhanie" className="hover:text-slate-800 transition-colors" target="_blank" rel="noopener noreferrer">Twitter</a>
+                    <a href="https://linkedin.com/in/vramdhanie" className="hover:text-slate-800 transition-colors" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+                &copy; 2024 Vincent Ramdhanie
+            </Footer>
         </Page>
     )
 }
