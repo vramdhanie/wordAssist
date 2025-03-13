@@ -33,7 +33,7 @@ A powerful tool to help solve 5-letter word puzzles like Wordle, Word Finder, or
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourname/wordAssist.git
+   git clone https://github.com/vramdhanie/wordAssist.git
    cd wordAssist
    ```
 
@@ -102,7 +102,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Vincent Ramdhanie**
 
 - Website: [vincentramdhanie.com](https://vincentramdhanie.com)
-- GitHub: [@yourusername](https://github.com/yourusername)
+- GitHub: [@vramdhanie](https://github.com/vramdhanie)
 
 ## 📊 Project Status
 
