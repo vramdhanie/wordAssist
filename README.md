@@ -7,7 +7,7 @@
 
 A powerful tool to help solve 5-letter word puzzles like Wordle, Word Finder, or Scrabble challenges.
 
-![Word Assist Screenshot](https://via.placeholder.com/800x400?text=Word+Assist+Screenshot)
+![Word Assist Screenshot](word_screenshot.png)
 
 ## 🚀 Features
 
@@ -27,7 +27,7 @@ A powerful tool to help solve 5-letter word puzzles like Wordle, Word Finder, or
 ### Prerequisites
 
 - Node.js (v14 or higher)
-- npm or yarn
+- npm, yarn, or pnpm
 
 ### Clone and Run Locally
 
@@ -39,16 +39,26 @@ A powerful tool to help solve 5-letter word puzzles like Wordle, Word Finder, or
 
 2. Install dependencies:
    ```bash
+   # Using npm
    npm install
-   # or 
+   
+   # Using yarn
    yarn install
+   
+   # Using pnpm
+   pnpm install
    ```
 
 3. Start the development server:
    ```bash
+   # Using npm
    npm start
-   # or
+   
+   # Using yarn
    yarn start
+   
+   # Using pnpm
+   pnpm start
    ```
 
 4. Open your browser and visit:
@@ -59,9 +69,14 @@ A powerful tool to help solve 5-letter word puzzles like Wordle, Word Finder, or
 ### Building for Production
 
 ```bash
+# Using npm
 npm run build
-# or
+
+# Using yarn
 yarn build
+
+# Using pnpm
+pnpm build
 ```
 
 The build files will be located in the `build` directory.
