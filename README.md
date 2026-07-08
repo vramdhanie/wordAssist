@@ -1,6 +1,6 @@
 # Word Assist
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed-Vercel-000000?logo=vercel)](https://words.vincentramdhanie.com)
+[![Deploy](https://img.shields.io/github/actions/workflow/status/vramdhanie/wordAssist/deploy.yml?branch=main&label=deploy&logo=github)](https://github.com/vramdhanie/wordAssist/actions/workflows/deploy.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
